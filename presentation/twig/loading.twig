@@ -1,0 +1,23 @@
+<style>
+  .fluxContainer {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .fluxContainer img {
+    margin: auto;
+  }
+</style>
+
+<script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function() {
+    updateFlux(
+      'tools/flux/show.php?src={{ src }}&nb={{ nb }}&template={{ template }}',
+      'flux{{ id }}'
+    );
+    });
+</script>
+
+<div id="flux{{ id }}" class="fluxContainer">
+  <img src='tools/flux/presentation/images/loading.gif' alt='loading'/>
+</div>

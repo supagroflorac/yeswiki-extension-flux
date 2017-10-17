@@ -1,0 +1,45 @@
+<style>
+  .fluxTitle {
+    text-decoration: none;
+    color: black;
+  }
+
+  .fluxContainer ul {
+    padding-left: 0;
+  }
+
+  .fluxContainer li {
+    list-style: none;
+    color: rgb(51, 51, 51);
+    margin-bottom: 5px;
+  }
+
+  .fluxContainer li a {
+    color: rgb(51, 51, 51);
+  }
+
+  .fluxContainer li a:hover {
+    color: rgb(51, 51, 51);
+  }
+
+  .fluxContainer .date, .fluxContainer .author {
+    font-size: 75%;
+    color: grey;
+  }
+
+</style>
+
+<a class="fluxTitle" href="{{ feed.getSiteUrl() }}">
+  <h3 >
+    {{ feed.getTitle() }}
+  </h3>
+</a>
+
+<ul>
+{%  for item in feed.items %}
+  <li>
+  <a href="{{ item.getUrl() }}">{{ item.getTitle() }} &#128279;</a><br/>
+  <span class='author'>{{ item.getAuthor() }}</span> - <span class='author'>{{ item.getDate()|date("d/m/Y H:m") }}</span>
+  </li>
+{% endfor %}
+</ul>

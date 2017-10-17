@@ -1,0 +1,21 @@
+{
+    "name": "yeswiki/flux",
+    "description": "Affiche un flux RSS/Atom",
+    "type": "extension YesWiki",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Florestan Bredow",
+            "email": "florestan.bredow@supagro.fr"
+        }
+    ],
+    "require": {
+        "twig/twig": "^2.4",
+        "miniflux/picofeed": "^0.1.35"
+    },
+    "autoload": {
+        "psr-4": {
+            "Flux\\Views\\": "app/Views"
+        }
+    }
+}
