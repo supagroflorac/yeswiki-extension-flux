@@ -14,7 +14,7 @@ if (!defined("WIKINI_VERSION")) {
 
 $src = filter_var($this->GetParameter("src"), FILTER_SANITIZE_URL);
 if (empty($src)) {
-    echo('La source doit être définie');
+    (new Views\Error('Action flux : Le paramètre "src" est indispensable.'))->show();
     return;
 }
 
@@ -25,5 +25,4 @@ if (filter_var($this->GetParameter("nb", '5'), FILTER_VALIDATE_INT)) {
     $nb = filter_var($this->GetParameter("nb", '5'));
 }
 
-$view = new Views\Loading($src, $template, $nb);
-$view->show();
+(new Views\Loading($src, $template, $nb))->show();

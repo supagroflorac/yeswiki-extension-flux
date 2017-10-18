@@ -7,7 +7,8 @@ use PicoFeed\Reader\Reader;
 use PicoFeed\PicoFeedException;
 
 if (!isset($_GET['src'])) {
-    die('Pas de flux définis'); // TODO Gestion plus propre
+    (new Views\Error('Action flux : Paramètre src non définis.'))->show();
+    return;
 }
 $src = filter_var(urldecode($_GET['src']), FILTER_SANITIZE_URL);
 
@@ -32,7 +33,8 @@ try {
 
     $feed = $parser->execute();
 } catch (PicoFeedException $e) {
-    die('Something go wrong...');
+    (new Views\Error('Action flux : La source n\'est pas accessible.'))->show();
+    return;
 }
 
 $view = new Views\AjaxShowFlux($src, $nbItemsToshow, $template, $feed);
