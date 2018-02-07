@@ -1,0 +1,55 @@
+<style>
+  .fluxInstagram {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: stretch;
+  }
+
+  .fluxInstagram a {
+    display: block;
+    width: 49%;
+    color: white;
+    height: 15em;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-end;
+    margin-bottom: 1em;
+  }
+
+  .fluxInstagram a:hover {
+    animation: linkHover 1s;
+    text-decoration: none;
+    transform: scale(1.05);
+  }
+
+  .itemFluxInstragram {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+    color: white;
+    display: block;
+    width: 100%;
+    padding: .5em;
+    height: 4em;
+  }
+
+  @keyframes linkHover {
+	from {
+		/*background: orange;*/
+		transform: scale(1.0);
+	}
+	to {
+		/*background: purple;*/
+		transform: scale(1.05);
+	}
+}
+</style>
+
+<div class="fluxInstagram">
+{%  for item in feed.items %}
+  <a href="{{ item.getUrl() }}" style="background: no-repeat center/100% url('{{ item.enclosureURL }}');">
+    <span class="itemFluxInstragram">{{ item.getTitle()|length > 40 ? item.getTitle()|slice(0, 40) ~ '...' : item.getTitle() }}</span>
+  </a>
+{% endfor %}
+</div>
