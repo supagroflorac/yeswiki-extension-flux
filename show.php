@@ -10,7 +10,7 @@ if (!isset($_GET['src'])) {
     (new Views\Error('Action flux : Paramètre src non définis.'))->show();
     return;
 }
-$src = filter_var(urldecode($_GET['src']), FILTER_SANITIZE_URL);
+$src = filter_var($_GET['src'], FILTER_SANITIZE_URL);
 
 $template = 'default';
 if (isset($_GET['template'])) {
